@@ -1,0 +1,12 @@
+# Compiled Lua sources
+luac.out
+
+# Plugin directory (if using Packer/vim-plug directly)
+plugin/packer_compiled.lua
+
+# Logs
+*.log
+
+# Local files
+.DS_Store
+.git/
