@@ -5,8 +5,25 @@
 ---@type ChadrcConfig
 local M = {}
 
+-- Your clipboard config goes here, at the top level
+vim.g.clipboard = {
+  name = 'WslClipboard',
+  copy = {
+    ['+'] = 'clip.exe',
+    ['*'] = 'clip.exe',
+  },
+  paste = {
+    ['+'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    ['*'] = 'powershell.exe -NoLogo -NoProfile -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+  },
+
+  cache_enabled = 0,
+}
+
+
+
 M.base46 = {
-	theme = "ashes",
+	theme = "onedark",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -20,5 +37,8 @@ M.base46 = {
 --          lazyload = false
 --      }
 --}
+
+
+
 
 return M
