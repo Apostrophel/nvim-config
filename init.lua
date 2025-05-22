@@ -1,5 +1,6 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
+vim.opt.termguicolors = true
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -22,6 +23,19 @@ require("lazy").setup({
     import = "nvchad.plugins",
   },
 
+  {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    dependencies = { "rcarriga/nvim-notify","MunifTanjim/nui.nvim" },
+    opts = {
+      notification = true,
+    },
+  },
+  
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
+  },
   { import = "plugins" },
 }, lazy_config)
 
@@ -31,6 +45,8 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "nvchad.autocmds"
+
+vim.notify = require("notify")
 
 vim.schedule(function()
   require "mappings"
